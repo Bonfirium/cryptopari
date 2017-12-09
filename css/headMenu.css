@@ -13,8 +13,7 @@
     
 }
 
-/*html {
-    background: #1e1e1e; /* not taken from body now */
+
 
 .head-menu img.brand {
     width: 40px;
@@ -29,7 +28,12 @@
 
 .head-menu li.active {
     float: left;
-   /* background-color: black;*/
+   background-color: black;
+  
+}
+.head-menu li.active a {
+
+   color:#ccc;
 }
 
 .head-menu li a {
