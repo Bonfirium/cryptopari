@@ -34,7 +34,7 @@ function create_headMenu( activeIndex = -1) {
 
     if ( activeIndex > -1 ) {
         navList.children[0].className = "active";
-        alert();
+        //alert();
     }
     // Set first list item as current
 
