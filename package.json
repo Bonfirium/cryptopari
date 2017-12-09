@@ -1,0 +1,23 @@
+{
+  "name": "cryptopari",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "web3": "^0.20.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fit4code/CryptoPari.git"
+  },
+  "author": "fit4code",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fit4code/CryptoPari/issues"
+  },
+  "homepage": "https://github.com/fit4code/CryptoPari#readme"
+}
