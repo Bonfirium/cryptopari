@@ -1,0 +1,207 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+
+    <h1>Coursetro Instructor</h1>
+
+    <h2 id="instructor"></h2>
+    <div id="blockCount"></div>
+
+    <label for="name" class="col-lg-2 control-label">Instructor Name</label>
+    <button id="button">Update Instructor</button>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+<script>
+
+
+    // $.getJSON('../../contracts/testcontract-config.json')
+    //     .success(function(data) {
+    //     console.log("first: " + new Date().getTime());
+    // }).then(function() {
+    //     console.log("second:" + new Date().getTime())
+    // });
+    //
+    // function getConfig() {
+    //
+    //     return $.getJSON('../../contracts/testcontract-config.json')
+    //         .then(function (data) {
+    //         return data;
+    //     });
+    // }
+    //
+    // let config = getConfig();
+    // alert(config);
+
+    // if (typeof web3 !== 'undefined') {
+    //     web3 = new Web3(web3.currentProvider);
+    // } else {
+    //     // set the provider you want from Web3.providers
+    //     web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    // }
+    //
+    // let web3 = new Web3(web3.currentProvider);
+
+    (async () => {
+        web3.eth.getBlockNumber(function (error, result) {
+            if (!error)
+                $('#blockCount').html(result);
+        });
+
+        web3.eth.getAccounts((err, res) => {
+            console.log(res)
+        });
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        var contractInterface = web3.eth.contract([{
+            "constant": true,
+            "inputs": [],
+            "name": "getOwnerAddress",
+            "outputs": [{
+                "name": "",
+                "type": "address"
+            }],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [],
+            "name": "getBalance",
+            "outputs": [{
+                "name": "",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [{
+                "name": "count",
+                "type": "uint256"
+            }],
+            "name": "buyTokens",
+            "outputs": [],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [],
+            "name": "getTokenPrice",
+            "outputs": [{
+                "name": "",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "pure",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [{
+                "name": "count",
+                "type": "uint256"
+            }],
+            "name": "sellTokens",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [],
+            "name": "destroy",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [],
+            "name": "sellTokens",
+            "outputs": [{
+                "name": "soldTokensCount",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [{
+                "name": "adr",
+                "type": "address"
+            }],
+            "name": "getBalanceOf",
+            "outputs": [{
+                "name": "",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [],
+            "name": "buyTokens",
+            "outputs": [{
+                "name": "boughtTokensCount",
+                "type": "uint256"
+            }],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function"
+        }, {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        }]);
+
+
+        var contract = contractInterface.at('0x3630Adc02417cCb1c037Cccd4FbC6c32Ff4a1BD4');
+
+        contract.getTokenPrice((err, res) => {
+            console.log(res);
+        });
+
+        contract.getOwnerAddress((err, res) => {
+
+            console.log(res);
+        })
+
+        // contract.getBalanceOf().then((err, res) => {
+        //
+        //     console.log(res);
+        // });
+        // Coursetro.getInstructor(function (error, result) {
+        //     if (!error) {
+        //         $("#instructor").html(result[0] + ' (' + result[1] + ' years old)');
+        //         console.log(result);
+        //     }
+        //     else
+        //         console.error(error);
+        // });
+
+    })()
+
+
+</script>
+
+</body>
+</html>
