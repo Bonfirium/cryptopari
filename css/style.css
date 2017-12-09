@@ -5,8 +5,9 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
+    border: 1px solid #000;
+    background-color: #df0101;
+    
 }
 
 .head-menu li {
@@ -15,19 +16,20 @@
 
 .head-menu li.active {
     float: left;
-    background-color: black;
+   /* background-color: black;*/
 }
 
 .head-menu li a {
     display: block;
-    color: #666;
+    color:#1e1e1e;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .head-menu li a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: #1e1e1e;
+    color:#df0101;
 }
 
 
