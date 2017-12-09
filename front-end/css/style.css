@@ -13,6 +13,11 @@
     float: left;
 }
 
+.head-menu li.active {
+    float: left;
+    background-color: black;
+}
+
 .head-menu li a {
     display: block;
     color: #666;
@@ -25,8 +30,4 @@
     background-color: #ddd;
 }
 
-.head-menu li a.active {
-    color: rgb(145, 44, 44);
-    background-color: #4CAF50;
-}
 
