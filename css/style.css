@@ -1,14 +1,20 @@
 .head-menu ul {
     position: fixed;
+    left: 0px;
+    top:0px;    
     width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     border: 1px solid #000;
-    background-color: #df0101;
+    background-color: #B40404;
+    border-top-style: none;
     
 }
+
+/*html {
+    background: #1e1e1e; /* not taken from body now */
 
 .head-menu img.brand {
     width: 40px;
@@ -28,15 +34,18 @@
 
 .head-menu li a {
     display: block;
+    font-weight:bold;
+    font-family:'Gill Sans MT',  sans-serif;
+    font-size:21px;
     color:#1e1e1e;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px;
     text-decoration: none;
 }
 
 .head-menu li a:hover:not(.active) {
     background-color: #1e1e1e;
-    color:#df0101;
+    color:#B40404;
 }
 
 
