@@ -2,7 +2,7 @@ function create_headMenu( activeIndex = -1 ) {
     var navItems = [
         {href: "./main.html", text: "Main Page"},
         {href: "./matches.html", text: "Matches"},
-        {href: "http://stackoverflow.com", text: "StackOverflow"}
+        {href: "./match.html", text: "Match"}
     ];
     var navElem  = document.createElement("nav"),
         navList  = document.createElement("ul"), 
