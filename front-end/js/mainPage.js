@@ -1,3 +1,3 @@
 window.onload = function () {
-     create_headMenu();
+     create_headMenu(0);
 }
