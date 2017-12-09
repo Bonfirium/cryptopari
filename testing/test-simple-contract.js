@@ -1,11 +1,12 @@
 
 const Web3 = require('web3')
-const Config = require('./contracts/testcontract-config.json')
+const Config = require('../config.json')
+const ContractConfig = require('../contracts/testcontract-config.json')
 
 async function main( ) {
-    let web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+    let web3 = new Web3(new Web3.providers.HttpProvider(Config.httpProvider))
     console.log('Blocks count: ' + await web3.eth.getBlockNumber( ))
-    let contract = new web3.eth.Contract(Config.interface, Config.address)
+    let contract = new web3.eth.Contract(ContractConfig.interface, ContractConfig.address)
     let ownerAdress = await contract.methods.getOwnerAddress( ).call( )
     console.log('Contract owner address is ' + ownerAdress)
     console.log('Owner token balance is ' + await contract.methods.getBalanceOf(ownerAdress).call( ))
