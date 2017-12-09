@@ -1,7 +1,7 @@
 pragma solidity ^0.4.0;
 
 contract Owned {
-    function Owned( ) public {
+    function Owned() public {
         owner = msg.sender;
     }
     address owner;
@@ -34,11 +34,11 @@ contract CryptoPari is Owned {
         mapping (address => Pari) bets;
     }
 
-    Game[ ] games;
+    Game[] games;
     mapping (address => uint) prizes;
     address owner;
 
-    function CryptoPari( ) public {
+    function CryptoPari() public {
         owner = msg.sender;
     }
 
@@ -93,11 +93,11 @@ contract CryptoPari is Owned {
         prizes[msg.sender] -= value;
     }
     
-    function getBalance( ) public constant returns(uint) {
+    function getBalance() public constant returns(uint) {
         return prizes[msg.sender];
     }
 
-    function destroy( ) public onlyOwner {
+    function destroy() public onlyOwner {
         selfdestruct(owner);
     }
 }

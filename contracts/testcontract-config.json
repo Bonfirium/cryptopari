@@ -1,5 +1,8 @@
 {
-	"address": "0x3630Adc02417cCb1c037Cccd4FbC6c32Ff4a1BD4",
+	"address": {
+        "kovan": "0x3630Adc02417cCb1c037Cccd4FbC6c32Ff4a1BD4",
+        "ropsten": "0xB44948695B5B9310a23B942AFF947bbf8684E788"
+    },
     "interface": [{
         "constant": true,
         "inputs": [],
