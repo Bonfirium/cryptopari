@@ -1,3 +1,7 @@
+html
+{
+    background: #1e1e1e;
+}
 .matchesList {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -49,20 +53,4 @@
     width: 43%;
     text-align: left;
     margin: 0 0 0 0;
-}
-html
-{
-    background: #1e1e1e;
-}
-.row {
-    color: white;
-    font-size: 35px;
-}
-.team_img, .team_name, .bet {
-    display: inline-block;
-}
-
-#vs_text {
-    font-size: 38px;
-    vertical-align: super;
 }
