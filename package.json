@@ -7,7 +7,8 @@
     "truffle": "^4.0.1"
   },
   "scripts": {
-    "test": "node testing/test-simple-contract.js"
+    "test": "node testing/test-simple-contract.js",
+    "test-upcoming": "node bot-parser/upcoming-games.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/fit4code/CryptoPari#readme",
   "dependencies": {
+    "request-promise": "^4.2.2",
+    "cheerio": "^1.0.0-rc.2",
     "web3": "^1.0.0-beta.26"
   }
 }

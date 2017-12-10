@@ -13,3 +13,8 @@ html {
 	font-size: 38px;
 	vertical-align: super;
 }
+body {
+	margin:0;
+	background: #1e1e1e;
+	background-image: url(../images/dota2Fon.jpg);
+}
