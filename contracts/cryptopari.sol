@@ -96,8 +96,9 @@ contract CryptoPari is Owned {
                 sumWinValues += value;
             }
         }
-        sumPrize -= min(sumPrize * 3 / 100, usedGas);
-        uint scale = sumPrize * 10**8 * 99 / sumWinValues;
+        uint profit = sumPrize - sumWinValues;
+        profit -= min(profit / 2, usedGas);
+        uint scale = (sumPrize - profit) * 10**8 * 99 / sumWinValues;
         for (i = 0; i < games[gameId].gamblers.length; i++) {
             if (leftWin == games[gameId].bets[games[gameId].gamblers[i]].forLeft) {
                 value = games[gameId].bets[games[gameId].gamblers[i]].value;
