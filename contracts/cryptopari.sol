@@ -8,6 +8,11 @@ contract CryptoPari {
         _;
     }
 
+    modifier saveSpendedGas {
+        usedGas += msg.gas * tx.gasprice;
+        _;
+    }
+
     struct Pari {
         uint value;
         bool forLeft;
@@ -37,15 +42,29 @@ contract CryptoPari {
     address admin;
     uint usedGas;
 
-    function CryptoPari() public {
+    function CryptoPari() public saveSpendedGas {
         admin = msg.sender;
-        usedGas = msg.gas * tx.gasprice;
     }
 
     function addModerator(address newModerator) public moderatable {
         require(msg.sender == admin || moderators[msg.sender] < 3);
-        moderators[msg.sender]++;
-        moderators[newModerator]++;
+        require(moderators[newModerator] == 0);
+        if (msg.sender != admin) {
+            moderators[msg.sender]++;
+        }
+        moderators[newModerator] = 1;
+    }
+
+    function removeModerator(address oldModerator) public saveSpendedGas {
+        require(msg.sender == admin);
+        delete moderators[oldModerator];
+    }
+
+    function changeAdmin(address newAdmin) public saveSpendedGas {
+        require(msg.sender == admin);
+        admin = newAdmin;
+        addModerator(msg.sender);
+        removeModerator(msg.sender);
     }
 
     function getUsedGas() public constant returns (uint) {
