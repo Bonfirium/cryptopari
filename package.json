@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node testing/test-simple-contract.js",
-    "test-upcoming": "node bot-parser/upcoming-games.js"
+    "test-upcoming": "node bot-parser/upcoming-games.js",
+    "test-finished": "node bot-parser/finished-games.js"
   },
   "repository": {
     "type": "git",
