@@ -22,10 +22,12 @@ window.onload = function () {
             right = document.createElement("td");
 
             row.className = "line";
+            row.onmouseover = highlight.bind( null, left, middle, right );
+            row.onmouseout  = highlight_off.bind(null, left, middle, right );
 
-            left.className = "left ebaniyJSaaa";
+            left.className = "left";
             middle.className = "middle";
-            right.className = "right ebaniyJSaaa";
+            right.className = "right";
 
             a.href = "./match.html";
 
@@ -80,7 +82,18 @@ window.onload = function () {
     document.body.appendChild(table);
     
 }
+function highlight( d1, d2, d3 ) {
+    d1.style.backgroundImage = 'url(".//images//leftRed.jpg")';
+    d2.style.backgroundColor = "#760101";
+    d3.style.backgroundImage = 'url(".//images//rightRed.jpg")';
 
+}
+function highlight_off( d1, d2, d3 ) {
+    d1.style.backgroundImage = 'url(".//images//left.jpg")';
+    d2.style.backgroundColor = "rgb(97, 97, 97)";
+    d3.style.backgroundImage = 'url(".//images//right.jpg")';
+
+}
 function getData() {
     data = {
         "now": [{

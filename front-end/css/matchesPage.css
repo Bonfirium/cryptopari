@@ -18,11 +18,6 @@ body {
     background-color: rgb(97, 97, 97);
     line-height: 20px;
 }
-.matchesList .line:hover {
-    background-color: #760101;
-    background-image: "";
-    z-index: 100;
-}
 
 .matchesList tr {
     border: 1px solid #000;
@@ -60,10 +55,8 @@ body {
     position: relative;
     top: -10px;
 }
-.ebaniyJSaaa:hover {
-    background-color: red;
-}
-.matchesList .left {
+
+.left {
     background-image: url("../images/left.jpg");
     background-position: right;
     background-repeat: no-repeat;
@@ -74,15 +67,14 @@ body {
     margin: 0 0 0 0;
 }
 
-.matchesList .middle {
+.middle {
     border-right: 1px solid black;
     border-left: 1px solid black;
     position: relative;
     text-align: center;
     width: 100px;
 
-}
-.matchesList .right {
+}.right {
     background-image: url("../images/right.jpg");
     background-position: right;
     background-repeat: no-repeat;
