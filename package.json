@@ -23,6 +23,7 @@
   "homepage": "https://github.com/fit4code/CryptoPari#readme",
   "dependencies": {
     "request-promise": "^4.2.2",
+    "request": "^2.83.0",
     "cheerio": "^1.0.0-rc.2",
     "web3": "^1.0.0-beta.26"
   }

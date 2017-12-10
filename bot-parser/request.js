@@ -5,8 +5,8 @@ class RequestBody {
         this.body = "";
     }
 
-    async setBodyByUrl(url) {
-        this.body = await this.getHTML(url);
+    async setBodyByUrl() {
+        this.body = await this.getHTML("http://www.gosugamers.net/dota2/gosubet");
     };
 
     async getHTML(url) {

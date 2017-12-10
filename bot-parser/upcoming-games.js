@@ -1,11 +1,10 @@
-const request = require("request-promise");
 const $ = require("cheerio");
 const RequestBody = require('./request');
 
 class UpcomingGames extends RequestBody {
-    constructor(baseUrl) {
+    constructor() {
         super();
-        this.baseUrl = baseUrl;
+        this.baseUrl = "http://www.gosugamers.net";
         this.games = [];
     }
 
@@ -80,16 +79,17 @@ class UpcomingGames extends RequestBody {
     }
 }
 
-(async () => {
-    try {
-        let url = "http://www.gosugamers.net";
-        let upcomingGames = new UpcomingGames(url);
-        await  upcomingGames.setBodyByUrl("http://www.gosugamers.net/dota2/gosubet");
-        (await  upcomingGames.getList()).forEach(val => console.log(JSON.stringify(val, null, ' ')));
+module.exports = UpcomingGames;
 
-
-    }
-    catch (e) {
-        console.error(e);
-    }
-})();
+// (async () => {
+//     try {
+//         let upcomingGames = new UpcomingGames();
+//         await  upcomingGames.setBodyByUrl();
+//         (await  upcomingGames.getList()).forEach(val => console.log(JSON.stringify(val, null, ' ')));
+//
+//
+//     }
+//     catch (e) {
+//         console.error(e);
+//     }
+// })();

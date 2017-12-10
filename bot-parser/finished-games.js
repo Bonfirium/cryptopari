@@ -1,12 +1,11 @@
-const request = require("request-promise");
 const $ = require("cheerio");
 const RequestBody = require('./request');
 
 
 class FinishedGames extends RequestBody {
-    constructor(baseUrl) {
+    constructor() {
         super();
-        this.baseUrl = baseUrl;
+        this.baseUrl = "http://www.gosugamers.net";
         this.games = [];
     }
 
@@ -91,20 +90,22 @@ class FinishedGames extends RequestBody {
         two.type = item2.attribs.class;
         two.score = item2.children[0].data;
         return {
-            [one.type]: one.score,
-            [two.type]: two.score
+            team1: one.score,
+            team2: two.score
         }
     }
 }
 
-(async () => {
-    try {
-        let url = "http://www.gosugamers.net";
-        let finishedgGames = new FinishedGames(url);
-        await  finishedgGames.setBodyByUrl("http://www.gosugamers.net/dota2/gosubet");
-        (await  finishedgGames.getList()).forEach(val => console.log(JSON.stringify(val, null, ' ')));
-    }
-    catch (e) {
-        console.error(e);
-    }
-})();
+module.exports = FinishedGames;
+
+
+// (async () => {
+//     try {
+//         let finishedgGames = new FinishedGames();
+//         await  finishedgGames.setBodyByUrl();
+//         (await  finishedgGames.getList()).forEach(val => console.log(JSON.stringify(val, null, ' ')));
+//     }
+//     catch (e) {
+//         console.error(e);
+//     }
+// })();
