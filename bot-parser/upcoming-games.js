@@ -15,7 +15,7 @@ class UpcomingGames extends RequestBody {
     }
 
     async parseGamesList() {
-        let upcomingGames = $("table[class='simple matches']", this.body)[1].children[1].children;
+        let upcomingGames = $("table[class='simple matches']", this.body)[0].children[1].children;
         for (let i = 1; i < upcomingGames.length; i += 2) {
             let link = this.parseOnceGame(upcomingGames[i]);
             let gamesInfo = this.parseGameHTML(await super.getHTML(link), link);
@@ -41,6 +41,9 @@ class UpcomingGames extends RequestBody {
         let command2Name = command2.children[3].children[0].children[0].data;
         let dateUfc = this.dateToUfc(date);
 
+        let URLparts = link.split('/');
+        let matchID = URLparts[URLparts.length-1].split('-')[0];
+
         return {
             teams: {
                 team1: {
@@ -52,7 +55,8 @@ class UpcomingGames extends RequestBody {
                 }
             },
             date: dateUfc,
-            url: link
+            url: link,
+            matchID
         }
 
     }
