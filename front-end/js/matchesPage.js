@@ -23,9 +23,9 @@ window.onload = function () {
 
             row.className = "line";
 
-            left.className = "left";
+            left.className = "left ebaniyJSaaa";
             middle.className = "middle";
-            right.className = "right";
+            right.className = "right ebaniyJSaaa";
 
             a.href = "./match.html";
 
