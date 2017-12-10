@@ -11,6 +11,11 @@ html
     position: absolute;
     
 }
+body {
+    margin:0;
+    background: #1e1e1e;
+    background-image: url(../images/dota2Fon.jpg);
+}
 
 .matchesList tr:hover td {
     background-color: #760101;
@@ -73,9 +78,7 @@ html
     margin: 0 0 0 0;
 }
 
-body {
-    background: #1e1e1e;
-}
+
 
 .emptyDiv {
     height: 20px;
