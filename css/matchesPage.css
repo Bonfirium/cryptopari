@@ -16,7 +16,7 @@ html
     background-color: #760101;
 }
 
-.matchesList td, tr {
+.matchesList tr {
     border: 2px solid #000;
     text-align: center;
     padding: 8px;
@@ -24,7 +24,15 @@ html
     width: 80%;
     
 }
-
+.matchesList td {
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    text-align: center;
+    padding: 8px;
+    background-color: #444;
+    width: 80%;
+    
+}
 .matchesList a {
     text-decoration: unset;
     color: black;
