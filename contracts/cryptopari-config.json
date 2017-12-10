@@ -1,4 +1,8 @@
-[{
+{
+    "address": {
+        "ropsten": "0xf33eca2b056ca54dd238a754ffde8a9b9873ca28"
+    },
+    "interface":[{
     "constant": false,
     "inputs": [{
         "name": "gameId",
@@ -174,3 +178,4 @@
     "stateMutability": "nonpayable",
     "type": "constructor"
 }]
+}
