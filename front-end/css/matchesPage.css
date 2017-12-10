@@ -1,3 +1,7 @@
+html
+{
+    background: #1e1e1e;
+}
 .matchesList {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -59,6 +63,7 @@
     width: 43%;
     text-align: left;
     margin: 0 0 0 0;
+<<<<<<< HEAD
 }
 
 body {
@@ -68,3 +73,6 @@ body {
 .emptyDiv {
     height: 20px;
 }
+=======
+}
+>>>>>>> 06702753040c47f199e66ee4fab2922847b20141
