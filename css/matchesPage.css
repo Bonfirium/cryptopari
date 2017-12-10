@@ -1,3 +1,56 @@
-html {
+.matchesList {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    left: 10%;
+    top:80px;
+    position: absolute;
+}
+
+.matchesList td, tr {
+    border: 2px solid #000;
+    text-align: center;
+    padding: 8px;
+    background-color: #444;
+    width: 80%;
+
+}
+
+.matchesList th {
+    border: 2px solid #000;
+    text-align: center;
+    padding: 8px;
+}
+.emptyDiv {
+    height: 20px;
+}
+.matchesList text {
+    margin-left: 8px;
+    margin-right: 8px;
+    position: relative;
+    top: -10px;
+}
+
+.matchesList .left {
+    position: inherit;
+    width: 43%;
+    text-align: right;
+    margin: 0 0 0 0;
+}
+
+.matchesList .middle {
+    position: inherit;
+    text-align: center;
+    width: 14%;
+
+}
+.matchesList .right {
+    position: inherit;
+    width: 43%;
+    text-align: left;
+    margin: 0 0 0 0;
+}
+html
+{
     background: #1e1e1e;
 }
