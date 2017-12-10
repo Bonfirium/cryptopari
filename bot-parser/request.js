@@ -6,9 +6,12 @@ class RequestBody {
     }
 
     async setBodyByUrl(url) {
-        let body = await request(url);
-        this.body = body;
+        this.body = await this.getHTML(url);
     };
+
+    async getHTML(url) {
+        return await request(url);
+    }
 }
 
 module.exports = RequestBody;
