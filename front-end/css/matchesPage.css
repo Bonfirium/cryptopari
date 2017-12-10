@@ -1,6 +1,7 @@
-html
-{
-    background: #1e1e1e;
+body {
+    margin: 0;
+    background-image: url(../images/background.jpg);
+    background-size: 100% 100%;
 }
 .matchesList {
     font-family: arial, sans-serif;
@@ -24,6 +25,12 @@ html
     width: 80%;
     
 }
+.vsIcon {
+    position: relative;
+    top: -25px;
+    width: 32px;
+    height: 32px;
+}
 
 .matchesList a {
     text-decoration: unset;
@@ -34,6 +41,7 @@ html
 .matchesList th {
     border: 2px solid #000;
     text-align: center;
+    display: inline-block;
     padding: 8px;
     
 }
@@ -63,10 +71,6 @@ html
     width: 43%;
     text-align: left;
     margin: 0 0 0 0;
-}
-
-body {
-    background: #1e1e1e;
 }
 
 .emptyDiv {
