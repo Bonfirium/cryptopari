@@ -92,7 +92,17 @@ console.log(data['now'][0]['date'])
     team2NameText.textContent = match['right']['name'];
     bet1Text.textContent = match['left']['coef'];
     bet2Text.textContent = match['right']['coef'];
-    team1Img.src = match['left']['logo'];
-    team2Img.src = match['right']['logo'];
+    if (match['left']['logo']) {
+    	team1Img.src = match['left']['logo'];
+    } else {
+    	team1Img.src = "https://seeklogo.com/images/D/dota-2-logo-556BDCC022-seeklogo.com.png";
+    }
+
+    if (match['right']['logo']) {
+    	team2Img.src = match['right']['logo'];
+    } else {
+    	team2Img.src = "https://seeklogo.com/images/D/dota-2-logo-556BDCC022-seeklogo.com.png";
+    }
+    
 
 }

@@ -4,6 +4,7 @@ html {
 .row {
 	color: white;
 	font-size: 35px;
+	text-align: center;
 }
 .team_img, .team_name, .bet {
 	display: inline-block;
