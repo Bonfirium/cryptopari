@@ -126,11 +126,10 @@ function finishedGames() {
 
             let longDate = new Date(0);
             longDate.setUTCFullYear(dateNow.getFullYear(), dateValue[1] - 1, dateValue[0]);
-            longDate.setUTCHours(timeValue[0] + 2);
+            longDate.setUTCHours(+timeValue[0] + 2);
             longDate.setUTCMinutes(timeValue[1]);
 
-            return longDate.getTime();
-
+            return longDate.getTime()
         }
     }
 }
