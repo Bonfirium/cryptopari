@@ -1,5 +1,6 @@
 const request = require("request-promise");
 const $ = require("cheerio");
+const fs = require('fs');
 
 function upcomingGamems() {
 
@@ -160,7 +161,7 @@ async function getHtml(url) {
     let upcomingGamesList = await upcomingGamems().getUpcomingGamesList(body);
     let finishedGamesList = await finishedGames().getFinishedGames(body);
 
-    console.log(upcomingGamesList);
-    console.log(finishedGamesList);
+    await fs.writeFile('./content/upG.json', JSON.stringify(upcomingGamesList), null, '\t\n');
+    await  fs.writeFile('./content/finG.json', JSON.stringify(finishedGamesList), null, '\t\n');
 })();
 
