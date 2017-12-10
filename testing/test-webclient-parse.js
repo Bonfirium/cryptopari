@@ -20,11 +20,12 @@ function upcomingGamems() {
 
             let commandsHTML = $('div[class="event-teams"]', game);
             let dateHTML = $('div[class="event-date"]', game);
-            let teams = await
-                this.getTeamsInfo(commandsHTML);
-            let gameTime = await
-                this.getGameTime(dateHTML);
+            let iventHTML = $('div[class="event-tournament-info"]', game);
+            let tournamentInfo = iventHTML[0].children[1].attribs.title;
+            let teams = await this.getTeamsInfo(commandsHTML);
+            let gameTime = await this.getGameTime(dateHTML);
             return {
+                tournamentInfo,
                 ...teams,
                 date: gameTime
             }
@@ -44,7 +45,6 @@ function upcomingGamems() {
                     img: teamAway[1].attribs.src
                 }
             }
-            //   console.log(gamesList);
         },
 
         async getGameTime(dateHTML) {
@@ -82,12 +82,15 @@ function finishedGames() {
             let commandsHTML = $('div[class="event-teams"]', game);
             let dateHTML = $('div[class="event-date"]', game);
             let scoreHTML = $('div[class="event-main-scores"]', game);
+            let iventHTML = $('div[class="event-tournament-info"]', game);
+            let tournamentInfo = iventHTML[0].children[1].attribs.title;
             let teams = await this.getTeamsInfo(commandsHTML);
             let gameTime = await this.getGameTime(dateHTML);
             let score = await this.getscoreInfo(scoreHTML);
             return {
+                tournamentInfo,
                 teams,
-                score,
+                ...score,
                 date: gameTime
             }
         },

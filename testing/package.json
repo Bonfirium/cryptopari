@@ -1,7 +1,12 @@
 {
-  "name": "$package_name$",
+  "name": "testing",
   "version": "0.0.1",
   "dependencies": {
-    $END$
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "cheerio": "^1.0.0-rc.2"
+  },
+  "scripts": {
+    "parse": "node test-webclient-parse.js"
   }
 }
