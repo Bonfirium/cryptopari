@@ -1,21 +1,17 @@
-
-#currentSection {
-    position: absolute;
-}
-
 .matchesList {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
+    left: 10%;
+    position: absolute;
 }
 
-.matchesList td,tr,div {
-    position: relative;
-    display: inline-block;
+.matchesList td, tr {
     border: 1px solid gray;
     text-align: center;
     padding: 8px;
     background-color: #e2e2e2;
+    width: 80%;
 
 }
 
@@ -26,9 +22,28 @@
 }
 
 .matchesList text {
-    top: 5px;
-    bottom: 5px;
     margin-left: 8px;
     margin-right: 8px;
-    margin-bottom: 8px;
+    position: relative;
+    top: -10px;
+}
+
+.matchesList .left {
+    position: inherit;
+    width: 43%;
+    text-align: right;
+    margin: 0 0 0 0;
+}
+
+.matchesList .middle {
+    position: inherit;
+    text-align: center;
+    width: 14%;
+
+}
+.matchesList .right {
+    position: inherit;
+    width: 43%;
+    text-align: left;
+    margin: 0 0 0 0;
 }

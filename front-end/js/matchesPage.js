@@ -7,39 +7,57 @@ window.onload = function () {
         row = document.createElement("tr");
         title = document.createElement("th");
         title.innerText = time;
-        title.colSpan = "2";
+        title.colSpan = "3";
         row.appendChild(title);
         table.appendChild(row);
+
         for ( i = 0; i < data[time].length; i++ ) {
             row = document.createElement("tr");
-            //row = document.createElement("div");
+            left = document.createElement("td");
+            middle = document.createElement("td");
+            right = document.createElement("td");
+
+            left.className = "left";
+            middle.className = "middle";
+            right.className = "right";
+
             leftIcon = document.createElement("img");
             leftIcon.src = data[time][i]["left"]["logo"];
             leftIcon.width = leftIcon.height = 32;
-            leftTeam = document.createElement("span");
+            leftTeam = document.createElement("text");
             leftTeam.innerText = data[time][i]["left"]["name"];
-
-            rightIcon = document.createElement("img");
-            rightIcon.src = data[time][i]["right"]["logo"];
-            rightIcon.width = rightIcon.height = 32;
-            rightTeam = document.createElement("span");
-            rightTeam.innerText = data[time][i]["right"]["name"];
 
             vsIcon = document.createElement("img");
             vsIcon.src = "./images/vs.png";
             vsIcon.width = vsIcon.height = 32;
 
+            rightIcon = document.createElement("img");
+            rightIcon.src = data[time][i]["right"]["logo"];
+            rightIcon.width = rightIcon.height = 32;
+            rightTeam = document.createElement("text");
+            rightTeam.innerText = data[time][i]["right"]["name"];
+
+            left.appendChild(leftTeam);
+            left.appendChild(leftIcon);
+            middle.appendChild(vsIcon);
+            right.appendChild(rightIcon);
+            right.appendChild(rightTeam);
+            row.appendChild(left);
+            row.appendChild(middle);
+            row.appendChild(right);
+
+            
             // row.appendChild( leftTeam );
             // row.appendChild( leftIcon );
             // row.appendChild( vsIcon );
             // row.appendChild( rightIcon );
             // row.appendChild( rightTeam );
     
-            row.appendChild( leftIcon );
-            row.appendChild( leftTeam );
-            row.appendChild( vsIcon );
-            row.appendChild( rightTeam );
-            row.appendChild( rightIcon );
+            // row.appendChild( leftIcon );
+            // row.appendChild( leftTeam );
+            // row.appendChild( vsIcon );
+            // row.appendChild( rightTeam );
+            // row.appendChild( rightIcon );
             //row1.appendChild(row);
             table.appendChild( row );
         }
