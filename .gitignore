@@ -1,3 +1,5 @@
 node_modules/
 
 config.json
+testing/.idea
+testing/package-lock.json
