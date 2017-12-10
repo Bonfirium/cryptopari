@@ -1,10 +1,11 @@
 window.onload = function () {
-
+    create_headMenu(1);
     data = getData();
     table = document.createElement("table");
     table.className = "matchesList";
     for ( let time in data) {
         row = document.createElement("tr");
+        
         title = document.createElement("th");
         title.innerText = time;
         title.colSpan = "3";
@@ -61,9 +62,13 @@ window.onload = function () {
             //row1.appendChild(row);
             table.appendChild( row );
         }
+        row = document.createElement("div");
+        row.className = "emptyDiv";
+        table.appendChild(row);
+
     }
     document.body.appendChild(table);
-    //create_headMenu(1);
+    
 }
 
 function getData() {
