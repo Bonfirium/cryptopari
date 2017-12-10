@@ -1,20 +1,14 @@
 pragma solidity ^0.4.19;
 
-contract Owned {
-    function Owned() public {
-        owner = msg.sender;
-    }
-    address owner;
-    modifier onlyOwner {
-        require(msg.sender == owner);
-        _;
-    }
-}
-
-contract CryptoPari is Owned {
+contract CryptoPari {
 
     modifier conservatingGasTax {
         usedGas += msg.gas * tx.gasprice;
+        _;
+    }
+
+    modifier moderatable {
+        require(msg.sender == admin || moderators[admin] != 0);
         _;
     }
 
@@ -31,6 +25,8 @@ contract CryptoPari is Owned {
     }
 
     struct Game {
+        uint32 gosuGamersGameId;
+        string gosuGamersURL;
         string left;
         string right;
         uint timestamp;
@@ -41,11 +37,18 @@ contract CryptoPari is Owned {
 
     Game[] games;
     mapping (address => uint) prizes;
-    address owner;
+    mapping (address => uint8) moderators;
+    address admin;
     uint usedGas;
 
     function CryptoPari() public conservatingGasTax {
-        owner = msg.sender;
+        admin = msg.sender;
+    }
+
+    function addModerator(address newModerator) public moderatable {
+        require(msg.sender == admin || moderators[msg.sender] < 3);
+        moderators[msg.sender]++;
+        moderators[newModerator]++;
     }
 
     function getUsedGas() public constant returns (uint) {
@@ -59,15 +62,24 @@ contract CryptoPari is Owned {
         games[gameId].bets[msg.sender] = Pari({
             value: msg.value,
             forLeft: forLeft
-            });
+        });
         games[gameId].gamblers.push(msg.sender);
     }
     
-    function createGame(string left, string right, uint timestamp) public onlyOwner conservatingGasTax {
-        games.push(Game({left:left,right:right,timestamp:timestamp,status:GameStatus.Betting,gamblers:new address[](0)}));
+    function createGame(string left, string right, uint timestamp, uint32 gosuGamersId, string gosuGamersURL)
+    public moderatable conservatingGasTax {
+        games.push(Game({
+            gosuGamersGameId: gosuGamersId,
+            gosuGamersURL: gosuGamersURL,
+            left: left,
+            right: right,
+            timestamp: timestamp,
+            status: GameStatus.Betting,
+            gamblers: new address[](0)
+        }));
     }
     
-    function finishBetting(uint32 gameId) public onlyOwner conservatingGasTax {
+    function finishBetting(uint32 gameId) public moderatable conservatingGasTax {
         require(gameId < games.length);
         require(games[gameId].status == GameStatus.Betting);
         games[gameId].status = GameStatus.Pending;
@@ -81,7 +93,7 @@ contract CryptoPari is Owned {
         return a < b ? b : a;
     }
     
-    function finishGame(uint32 gameId, bool leftWin) public onlyOwner conservatingGasTax {
+    function finishGame(uint32 gameId, bool leftWin) public moderatable conservatingGasTax {
         require(gameId < games.length);
         require(games[gameId].status == GameStatus.Pending);
         uint i;
@@ -117,7 +129,7 @@ contract CryptoPari is Owned {
         return prizes[msg.sender];
     }
 
-    function destroy() public onlyOwner {
-        selfdestruct(owner);
+    function destroy() public moderatable {
+        selfdestruct(admin);
     }
 }
