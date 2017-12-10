@@ -1,5 +1,7 @@
 body {
+    margin:0;
     background: #1e1e1e;
+    background-image: url(../images/dota2Fon.jpg);
 }
 .background
 {
