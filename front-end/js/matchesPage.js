@@ -9,10 +9,12 @@ window.onload = function () {
         title = document.createElement("th");
         title.innerText = time;
         title.colSpan = "3";
+                
         row.appendChild(title);
         table.appendChild(row);
 
         for ( i = 0; i < data[time].length; i++ ) {
+
             row = document.createElement("tr");
             a = document.createElement("a")
             left = document.createElement("td");
@@ -31,9 +33,12 @@ window.onload = function () {
             leftTeam = document.createElement("text");
             leftTeam.innerText = data[time][i]["left"]["name"];
 
-            vsIcon = document.createElement("img");
-            vsIcon.src = "./images/vs.png";
-            vsIcon.width = vsIcon.height = 32;
+            if ( i == 0 ) {
+                vsIcon = document.createElement("img");
+                vsIcon.className = "vsIcon";
+                vsIcon.src = "./images/vs.png";
+                middle.appendChild(vsIcon);
+            }
 
             rightIcon = document.createElement("img");
             rightIcon.src = data[time][i]["right"]["logo"];
@@ -43,7 +48,7 @@ window.onload = function () {
 
             left.appendChild(leftTeam);
             left.appendChild(leftIcon);
-            middle.appendChild(vsIcon);
+            //middle.appendChild(vsIcon);
             right.appendChild(rightIcon);
             right.appendChild(rightTeam);
             a.appendChild(left);
