@@ -14,6 +14,7 @@ window.onload = function () {
 
         for ( i = 0; i < data[time].length; i++ ) {
             row = document.createElement("tr");
+            a = document.createElement("a")
             left = document.createElement("td");
             middle = document.createElement("td");
             right = document.createElement("td");
@@ -21,6 +22,8 @@ window.onload = function () {
             left.className = "left";
             middle.className = "middle";
             right.className = "right";
+
+            a.href = "./match.html";
 
             leftIcon = document.createElement("img");
             leftIcon.src = data[time][i]["left"]["logo"];
@@ -43,10 +46,10 @@ window.onload = function () {
             middle.appendChild(vsIcon);
             right.appendChild(rightIcon);
             right.appendChild(rightTeam);
-            row.appendChild(left);
-            row.appendChild(middle);
-            row.appendChild(right);
-
+            a.appendChild(left);
+            a.appendChild(middle);
+            a.appendChild(right);
+            row.appendChild(a);
             
             // row.appendChild( leftTeam );
             // row.appendChild( leftIcon );
