@@ -2,13 +2,9 @@ pragma solidity ^0.4.19;
 
 contract CryptoPari {
 
-    modifier conservatingGasTax {
-        usedGas += msg.gas * tx.gasprice;
-        _;
-    }
-
     modifier moderatable {
         require(msg.sender == admin || moderators[admin] != 0);
+        usedGas += msg.gas * tx.gasprice;
         _;
     }
 
@@ -41,8 +37,9 @@ contract CryptoPari {
     address admin;
     uint usedGas;
 
-    function CryptoPari() public conservatingGasTax {
+    function CryptoPari() public {
         admin = msg.sender;
+        usedGas = msg.gas * tx.gasprice;
     }
 
     function addModerator(address newModerator) public moderatable {
@@ -67,7 +64,7 @@ contract CryptoPari {
     }
     
     function createGame(string left, string right, uint timestamp, uint32 gosuGamersId, string gosuGamersURL)
-    public moderatable conservatingGasTax {
+    public moderatable {
         games.push(Game({
             gosuGamersGameId: gosuGamersId,
             gosuGamersURL: gosuGamersURL,
@@ -79,7 +76,7 @@ contract CryptoPari {
         }));
     }
     
-    function finishBetting(uint32 gameId) public moderatable conservatingGasTax {
+    function finishBetting(uint32 gameId) public moderatable {
         require(gameId < games.length);
         require(games[gameId].status == GameStatus.Betting);
         games[gameId].status = GameStatus.Pending;
@@ -93,7 +90,7 @@ contract CryptoPari {
         return a < b ? b : a;
     }
     
-    function finishGame(uint32 gameId, bool leftWin) public moderatable conservatingGasTax {
+    function finishGame(uint32 gameId, bool leftWin) public moderatable {
         require(gameId < games.length);
         require(games[gameId].status == GameStatus.Pending);
         uint i;
@@ -129,7 +126,8 @@ contract CryptoPari {
         return prizes[msg.sender];
     }
 
-    function destroy() public moderatable {
+    function destroy() public {
+        require(msg.sender == admin);
         selfdestruct(admin);
     }
 }
