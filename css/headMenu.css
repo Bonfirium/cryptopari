@@ -7,9 +7,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #000;
-    background-color: #B40404;
-    border-top-style: none;    
+    border: 0px solid #000;
+    background-color: #760101;   
 }
 
 
@@ -17,6 +16,7 @@
 .head-menu img.brand {
     width: 40px;
     height: 40px;
+    padding: 6px;
     top: 2px;
     position: relative;
 }
@@ -32,17 +32,17 @@
 }
 .head-menu li.active a {
 
-   color:#ccc;
+   color:#AAA;
 }
 
 .head-menu li a {
     display: block;
     font-weight:bold;
     font-family:'Gill Sans MT',  sans-serif;
-    font-size:21px;
-    color:#1e1e1e;
+    font-size:25px;
+    color:black;
     text-align: center;
-    padding: 10px 16px;
+    padding: 14px 16px;
     text-decoration: none;
 }
 
