@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "truffle": "^4.0.1"
+  },
   "scripts": {
     "test": "node testing/test-simple-contract.js"
   },
