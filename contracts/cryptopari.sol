@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.19;
 
 contract Owned {
     function Owned() public {
@@ -89,8 +89,8 @@ contract CryptoPari is Owned {
     
     function getPrizes(uint value) public {
         require(value <= prizes[msg.sender]);
-        msg.sender.transfer(value);
         prizes[msg.sender] -= value;
+        msg.sender.transfer(value);
     }
     
     function getBalance() public constant returns(uint) {
