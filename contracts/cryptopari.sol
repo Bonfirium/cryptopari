@@ -13,6 +13,11 @@ contract Owned {
 
 contract CryptoPari is Owned {
 
+    modifier conservatingGasTax {
+        usedGas += msg.gas * tx.gasprice;
+        _;
+    }
+
     struct Pari {
         uint value;
         bool forLeft;
@@ -37,9 +42,14 @@ contract CryptoPari is Owned {
     Game[] games;
     mapping (address => uint) prizes;
     address owner;
+    uint usedGas;
 
-    function CryptoPari() public {
+    function CryptoPari() public conservatingGasTax {
         owner = msg.sender;
+    }
+
+    function getUsedGas() public constant returns (uint) {
+        return usedGas;
     }
 
     function placeBet(uint32 gameId, bool forLeft) public payable {
@@ -53,17 +63,25 @@ contract CryptoPari is Owned {
         games[gameId].gamblers.push(msg.sender);
     }
     
-    function createGame(string left, string right, uint timestamp) public onlyOwner {
+    function createGame(string left, string right, uint timestamp) public onlyOwner conservatingGasTax {
         games.push(Game({left:left,right:right,timestamp:timestamp,status:GameStatus.Betting,gamblers:new address[](0)}));
     }
     
-    function finishBetting(uint32 gameId) public onlyOwner {
+    function finishBetting(uint32 gameId) public onlyOwner conservatingGasTax {
         require(gameId < games.length);
         require(games[gameId].status == GameStatus.Betting);
         games[gameId].status = GameStatus.Pending;
     }
+
+    function max(uint a, uint b) public pure returns (uint) {
+        return a > b ? a : b;
+    }
+
+    function min(uint a, uint b) public pure returns (uint) {
+        return a < b ? b : a;
+    }
     
-    function finishGame(uint32 gameId, bool leftWin) public onlyOwner {
+    function finishGame(uint32 gameId, bool leftWin) public onlyOwner conservatingGasTax {
         require(gameId < games.length);
         require(games[gameId].status == GameStatus.Pending);
         uint i;
@@ -78,6 +96,7 @@ contract CryptoPari is Owned {
                 sumWinValues += value;
             }
         }
+        sumPrize -= min(sumPrize * 3 / 100, usedGas);
         uint scale = sumPrize * 10**8 * 99 / sumWinValues;
         for (i = 0; i < games[gameId].gamblers.length; i++) {
             if (leftWin == games[gameId].bets[games[gameId].gamblers[i]].forLeft) {
