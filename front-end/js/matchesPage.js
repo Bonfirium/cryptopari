@@ -29,7 +29,7 @@ window.onload = function () {
             middle.className = "middle";
             right.className = "right";
 
-            a.href = "./match.html";
+            a.href = "./match.html?" + time + "/" + i;
 
             leftIcon = document.createElement("img");
             leftIcon.src = data[time][i]["left"]["logo"];
