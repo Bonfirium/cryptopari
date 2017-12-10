@@ -12,12 +12,17 @@ body {
     position: absolute;
     
 }
+body {
+    margin:0;
+    background: #1e1e1e;
+    background-image: url(../images/dota2Fon.jpg);
+}
 
 .matchesList tr:hover td {
     background-color: #760101;
 }
 
-.matchesList td, tr {
+.matchesList tr,td {
     border: 2px solid #000;
     text-align: center;
     padding: 8px;

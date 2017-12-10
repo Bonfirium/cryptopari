@@ -9,9 +9,7 @@ window.onload = function () {
         title = document.createElement("th");
         title.innerText = time;
         title.colSpan = "3";
-        title.height = "32px";
-
-        
+                
         row.appendChild(title);
         table.appendChild(row);
 
