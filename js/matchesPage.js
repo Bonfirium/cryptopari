@@ -9,18 +9,27 @@ window.onload = function () {
         title = document.createElement("th");
         title.innerText = time;
         title.colSpan = "3";
+
         row.appendChild(title);
         table.appendChild(row);
 
         for ( i = 0; i < data[time].length; i++ ) {
+
             row = document.createElement("tr");
+            a = document.createElement("a")
             left = document.createElement("td");
             middle = document.createElement("td");
             right = document.createElement("td");
 
+            row.className = "line";
+            row.onmouseover = highlight.bind( null, left, middle, right );
+            row.onmouseout  = highlight_off.bind(null, left, middle, right );
+
             left.className = "left";
             middle.className = "middle";
             right.className = "right";
+
+            a.href = "./match.html?" + time + "/" + i;
 
             leftIcon = document.createElement("img");
             leftIcon.src = data[time][i]["left"]["logo"];
@@ -28,9 +37,12 @@ window.onload = function () {
             leftTeam = document.createElement("text");
             leftTeam.innerText = data[time][i]["left"]["name"];
 
-            vsIcon = document.createElement("img");
-            vsIcon.src = "./images/vs.png";
-            vsIcon.width = vsIcon.height = 32;
+            if ( i == 0 ) {
+                vsIcon = document.createElement("img");
+                vsIcon.className = "vsIcon";
+                vsIcon.src = "./images/vs.png";
+                middle.appendChild(vsIcon);
+            }
 
             rightIcon = document.createElement("img");
             rightIcon.src = data[time][i]["right"]["logo"];
@@ -40,13 +52,13 @@ window.onload = function () {
 
             left.appendChild(leftTeam);
             left.appendChild(leftIcon);
-            middle.appendChild(vsIcon);
+            //middle.appendChild(vsIcon);
             right.appendChild(rightIcon);
             right.appendChild(rightTeam);
-            row.appendChild(left);
-            row.appendChild(middle);
-            row.appendChild(right);
-
+            a.appendChild(left);
+            a.appendChild(middle);
+            a.appendChild(right);
+            row.appendChild(a);
             
             // row.appendChild( leftTeam );
             // row.appendChild( leftIcon );
@@ -70,7 +82,18 @@ window.onload = function () {
     document.body.appendChild(table);
     
 }
+function highlight( d1, d2, d3 ) {
+    d1.style.backgroundImage = 'url(".//images//leftRed.jpg")';
+    d2.style.backgroundColor = "#760101";
+    d3.style.backgroundImage = 'url(".//images//rightRed.jpg")';
 
+}
+function highlight_off( d1, d2, d3 ) {
+    d1.style.backgroundImage = 'url(".//images//left.jpg")';
+    d2.style.backgroundColor = "rgb(97, 97, 97)";
+    d3.style.backgroundImage = 'url(".//images//right.jpg")';
+
+}
 function getData() {
     data = {
         "now": [{
