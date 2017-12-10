@@ -3,7 +3,8 @@
         "left": {
             "name": "OpTic",
             "logo": "http://game-tournaments.com/media/logo/_60/pic-20170927-593x400-7701980052.png",
-            "coef": 1.12
+            "coef": 1.12,
+            "date": "27.9.2017 9:32"
         },
         "right": {
             "name": "PENTA",
