@@ -8,29 +8,28 @@ body {
     border-collapse: collapse;
     width: 80%;
     left: 10%;
-    top: 80px;
+    top:80px;
     position: absolute;
 }
 .matchesList table {
     margin: 0;
 }
 .matchesList .line {
-    background-color: rgb(97, 97, 97);
-    line-height: 20px;
+    /* background-color: rgb(97, 97, 97); */
 }
 .matchesList .line:hover {
-    background-color: #760101;
-    background-image: "";
-    z-index: 100;
+    background: transparent;
+    /* background-color: #760101; */
 }
 
 .matchesList tr {
-    border: 1px solid #000;
-    vertical-align: middle;
+    background: transparent;
+    border: 2px solid #000;
     text-align: center;
     padding: 8px;
-    background-color: #444;
+    /* background-color: #444; */
     width: 80%;
+    
 }
 
 
@@ -62,10 +61,6 @@ body {
 }
 
 .matchesList .left {
-    background-image: url("../images/left.jpg");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     position: relative;
     width: 43%;
     text-align: right;
@@ -81,10 +76,6 @@ body {
 
 }
 .matchesList .right {
-    background-image: url("../images/right.jpg");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     position: relative;
     width: 43%;
     text-align: left;

@@ -9,7 +9,7 @@ window.onload = function () {
         title = document.createElement("th");
         title.innerText = time;
         title.colSpan = "3";
-                
+
         row.appendChild(title);
         table.appendChild(row);
 
@@ -20,6 +20,8 @@ window.onload = function () {
             left = document.createElement("td");
             middle = document.createElement("td");
             right = document.createElement("td");
+
+            row.className = "line";
 
             left.className = "left";
             middle.className = "middle";
